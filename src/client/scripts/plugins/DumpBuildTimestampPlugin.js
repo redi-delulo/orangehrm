@@ -6,6 +6,7 @@ class DumpBuildTimestampPlugin {
       const fs = require('fs');
 
       const buildFile = path.join(__dirname, '/../../../../web/dist/build');
+      fs.mkdirSync(path.dirname(buildFile), {recursive: true});
       const now = Date.now().toString();
       fs.writeFileSync(buildFile, now);
       console.info('Assets version: ', now);
