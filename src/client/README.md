@@ -1,36 +1,43 @@
-# orangehrm
+# Sunrise HRM Client
 
-### Prerequisites
+Vue frontend for Sunrise HRM.
 
-- Yarn
-- [Visual Studio Code](https://code.visualstudio.com/) with [Vetur extension](https://github.com/vuejs/vetur) [Optional]
+## Prerequisites
 
-### Getting Started
+- Node.js
+- Yarn 4.x
 
-#### Install dependencies
+## Install dependencies
 
-```
+```bash
 yarn install
 ```
 
-#### Compiles and hot-reloads for development
-```
-yarn serve
+## Start development server
+
+```bash
+yarn serve --host 0.0.0.0 --port 8080
 ```
 
-#### Compiles and minifies for production
+Open `http://localhost:8080` in your browser or workspace preview.
+
+If the dev server reports that `web/dist/build` is missing, run this from the repository root and restart the dev server:
+
+```bash
+mkdir -p web/dist
 ```
+
+## Build production assets
+
+```bash
 yarn build
 ```
 
-#### Unit Testing
+Assets are emitted to `../../web/dist`.
 
-```
-yarn test:unit
-```
+## Checks
 
-#### Linting
-
-```
+```bash
 yarn lint
+yarn test:unit
 ```

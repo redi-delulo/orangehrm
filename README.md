@@ -1,53 +1,65 @@
-<img width="40%" alt='OrangeHRM' src='https://raw.githubusercontent.com/wiki/orangehrm/orangehrm/logos/logo.svg#gh-light-mode-only'/><img width="40%" alt='OrangeHRM' src='https://raw.githubusercontent.com/wiki/orangehrm/orangehrm/logos/logo_dark_mode.svg#gh-dark-mode-only'/>
+# Sunrise HRM
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/orangehrm/orangehrm.svg)](https://hub.docker.com/r/orangehrm/orangehrm) [![SourceForge Downloads](https://img.shields.io/sourceforge/dm/orangehrm.svg)](https://sourceforge.net/projects/orangehrm/) [![SourceForge Downloads](https://img.shields.io/sourceforge/dt/orangehrm.svg)](https://sourceforge.net/projects/orangehrm/)
+Sunrise HRM is a web-based human resource management application. This repository contains the PHP backend, installer, and Vue frontend assets.
 
-# OrangeHRM Starter Application
+## Prerequisites
 
-OrangeHRM is a comprehensive Human Resource Management (HRM) System that captures all the essential functionalities required for any enterprise. Copyright (C) 2006 OrangeHRM Inc., http://www.orangehrm.com/
+- PHP 7.4 or newer with the extensions listed in `src/composer.json`
+- Composer
+- Node.js and Yarn 4.x
+- A supported SQL database for the full backend installation
 
-OrangeHRM is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+## Run the frontend preview
 
-OrangeHRM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+Use this when you only need to preview the Vue client during development.
 
-## Getting started
+```bash
+cd src/client
+yarn install
+yarn serve --host 0.0.0.0 --port 8080
+```
 
-- Download the latest version of OrangeHRM Starter [here](https://sourceforge.net/projects/orangehrm/files/latest/download).
+Open the preview at:
 
-- Prerequisites and environment set up for installing OrangeHRM Starter:
-  - [Install on Linux](https://starterhelp.orangehrm.com/hc/en-us/articles/6187572000540-Prerequisites-for-installing-OrangeHRM-Starter-in-Linux)
-  - [Install on Windows](https://starterhelp.orangehrm.com/hc/en-us/articles/6187576427804-Prerequisites-for-installing-OrangeHRM-Starter-in-Windows)
+```text
+http://localhost:8080
+```
 
-- Install OrangeHRM using the web installer:
-  - [OrangeHRM Starter Installation Guide](https://starterhelp.orangehrm.com/hc/en-us/articles/5295915003666-OrangeHRM-Starter-Installation-Guide)
-  - [OrangeHRM Starter Upgrade Guide](https://starterhelp.orangehrm.com/hc/en-us/articles/6937346912402-OrangeHRM-Starter-Upgrade-Guide-For-5x-versions-)
+If the dev server reports that `web/dist/build` is missing, create the output directory from the repository root and run the command again:
 
-- For further information on how to use the product please refer to the User Guides, Tutorial videos, and FAQs available on [Help Portal](https://starterhelp.orangehrm.com)
+```bash
+mkdir -p web/dist
+```
 
-## OrangeHRM Mobile App
+## Build frontend assets
 
-<a href="https://play.google.com/store/apps/details?id=com.orangehrm.opensource" target="_blank">
-<img height="54" alt='Get it on Google Play'
-    src='https://raw.githubusercontent.com/wiki/orangehrm/orangehrm/mobile/play_store_cropped_en_US_2022_08_04.png'/>
-</a>
-<a href="https://apps.apple.com/us/app/orangehrm/id1527247547" target="_blank">
-<img height="54" alt='Download on the App Store'
-    src='https://raw.githubusercontent.com/wiki/orangehrm/orangehrm/mobile/app_store_en_US.svg'/>
-</a>
+```bash
+cd src/client
+yarn install
+yarn build
+```
 
-## Resources
+The production assets are written to `web/dist`.
 
-### Demo
-Live demo is available at : https://opensource-demo.orangehrmlive.com
+## Run frontend checks
 
-### Releases
-Sourceforge : https://sourceforge.net/p/orangehrm
+```bash
+cd src/client
+yarn lint
+yarn test:unit
+```
 
-### Website
-https://www.orangehrm.com/
+## Backend setup
 
-## Help & Support
-Submit your help requests through [OrangeHRM Help Portal](https://starterhelp.orangehrm.com/hc/en-us/requests/new) or Email to [ossupport@orangehrm.com](mailto:ossupport@orangehrm.com)
+Install PHP dependencies from the backend directory:
 
-## License 
-GNU General Public License
+```bash
+cd src
+composer install
+```
+
+After dependencies are installed, serve the repository with a PHP-compatible web server whose document root points to the repository `web` directory, then complete setup through the web installer.
+
+## License
+
+GNU General Public License v3.0 or later.
