@@ -199,9 +199,9 @@ class ResetPasswordService
         try {
             $this->getEmailService()->setMessageTo([$receiver->getWorkEmail()]);
             $this->getEmailService()->setMessageFrom(
-                [$this->getEmailService()->getEmailConfig()->getSentAs() => 'OrangeHRM']
+                [$this->getEmailService()->getEmailConfig()->getSentAs() => 'Sunrise']
             );
-            $this->getEmailService()->setMessageSubject('OrangeHRM Password Reset');
+            $this->getEmailService()->setMessageSubject('Sunrise Password Reset');
             $this->getEmailService()->setMessageBody(
                 $this->generatePasswordResetEmailBody($receiver, $resetCode, $userName)
             );
